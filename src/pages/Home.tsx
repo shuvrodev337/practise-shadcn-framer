@@ -1,5 +1,7 @@
+import Container from "@/components/ui/Container";
+
 const Home = () => {
-  return <div>This is Home</div>;
+  return <Container>This is Home</Container>;
 };
 
 export default Home;
