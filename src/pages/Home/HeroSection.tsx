@@ -43,7 +43,7 @@ const HeroSection = () => {
   };
   return (
     <div className="overflow-hidden">
-      <Container className="h-[calc(100vh-64px)] grid grid-cols-1 lg:grid-cols-2 place-content-center pt-16">
+      <Container className="h-screen grid grid-cols-1 lg:grid-cols-2 place-content-center pt-16">
         <motion.div
           variants={introParent}
           initial={"hidden"}
@@ -52,14 +52,13 @@ const HeroSection = () => {
           <motion.h1
             className="text-5xl  md:text-8xl font-bold text-nowrap"
             variants={introChild}
-            // transition={{}}
           >
             <span className="text-gray">Don't worry.</span>
             <br />
             <span>We'll fix it.</span>
           </motion.h1>
           <motion.p
-            className="text-dark-gray max-w-[50ch] mt-10 mb-5"
+            className="text-dark-gray max-w-[40ch] mt-10 mb-5"
             variants={introChild}
           >
             Welcome to{" "}
