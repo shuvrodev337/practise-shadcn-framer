@@ -14,7 +14,7 @@ const useScrollGrow = () => {
   // An intersection describes a point when the target and container meet. So for example, "start end" means when the start of the target meets the end of the container.
 
   const { scrollYProgress } = useScroll({
-    // scrollYProgress returns 0 to 1 represenr=ting the whole
+    // scrollYProgress returns 0 to 1 representing the whole target and viewport
 
     target: componentRef,
     offset: ["0 1", "1.2 1"],
@@ -23,13 +23,14 @@ const useScrollGrow = () => {
     // target er uporer ongsho ta ke denote kora hoyeche 0 diye
     // overall viewport ta denote kora hocche 1 diye
     // orthat jokhon amar target er uporer ongsho ta, amar viewport er nicher ongsher sathe meet korbe, tokhon animation ta apply koro.
-    // 0-> top
-    // 1-> whole jinish
+    // 0-> kono akta jinisher shuru theke
+    // 1-> mane whole jinish ta
     // 2-> double
   });
-  const scaleValues = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
-  const opacityValues = useTransform(scrollYProgress, [0, 1], [0.1, 1]);
-
+  const scaleValues = useTransform(scrollYProgress, [0, 1], [0.9, 1]); //scale er style
+  // parameters ( motion Value, motion value ta(scrollYProgress) koto theke koto porjonto jabe, setake transform kore koto theke scale up hobe[0.9, 1] bole dicchi)
+  const opacityValues = useTransform(scrollYProgress, [0, 1], [0.1, 1]); //opacity er style
+  // parameters ( motion Value, motion value ta(scrollYProgress) koto theke koto porjonto jabe, setake transform kore koto theke opacity up hobe[0.1, 1] bole dicchi)
   const style = {
     scale: scaleValues,
     opacity: opacityValues,
