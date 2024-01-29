@@ -5,7 +5,7 @@ import AddService from "@/pages/Admin/AddService";
 import Dashboard from "@/pages/Admin/Dashboard";
 import ServiceList from "@/pages/Admin/ServiceList";
 import Home from "@/pages/Home";
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +28,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <Navigate to={"/admin/dashboard"}></Navigate>, // to avoid activeLink at '/admin' all the time.
+      },
+      {
+        path: "dashboard",
         element: <Dashboard />,
       },
       {

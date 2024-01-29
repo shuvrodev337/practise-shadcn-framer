@@ -1,0 +1,25 @@
+Tanstack query is a Powerful asynchronous state management for TS/JS, React, Solid, Vue and Svelte.
+Sever side e kono data thakle, seta fetch kore, j data ta application e asteche, seta sync kore tanstack.
+Doc:  https://tanstack.com/query/latest/docs/framework/react/overview
+setup: https://tanstack.com/query/latest/docs/framework/react/quick-start
+Tanstack query er vasay-
+query- get korle, useQuery
+mutation - post,delete, patch, update korle useMutation
+
+
+// Query example
+  const {data,isLoading,isError,} = useQuery({ queryKey: ['todos'], queryFn: getServices })
+  queryKey=> Each query has to be given a unique name, in an array.
+  queryFn=> Query function, the async function like fetch/axios
+ //(optional) select=> use kore datar. kon kon jinish lagbe seta specify kore deya jay, etar vitore map/filter chaliye
+
+
+
+// Tanstack query devtools
+https://tanstack.com/query/latest/docs/framework/react/devtools
+
+// Errors handling: https://tanstack.com/query/latest/docs/framework/react/guides/query-functions
+ If there is an error. Tanstack refetches 3 times after initial mount er fetch (total 4 times) to check if there is definitely an error fetching data.
+
+ While most utilities like axios automatically throw errors for unsuccessful HTTP calls, fetch do not throw errors by default. If that's the case, we need to throw them on our own.
+
