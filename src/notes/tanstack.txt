@@ -23,3 +23,32 @@ https://tanstack.com/query/latest/docs/framework/react/devtools
 
  While most utilities like axios automatically throw errors for unsuccessful HTTP calls, fetch do not throw errors by default. If that's the case, we need to throw them on our own.
 
+// Cache in Behaviour of Tanstack Query, Cache Time, Stale Time
+  1.Kono Component st time Mount e Tanstack jokhon kono data fetch kore ane, tokhon se oi data k ene cache kore rakhe.example: todoIst ta get korar por cache kore rakhe.
+
+   2. Next time jokhon abar oi component mount hoy, (todoList/ serviceList page e abar asa hole), tanstack cache theke data ta serve kore.
+   component unmount hole oi component er query ('todos') er status 'inactive' hoye jay.
+   component mount hole oi component er query ('todos') er status 'fetching' and then data cache korar pore status 'stale' hoye jay.
+
+  3. Proti bar cach theke data dekhanor somoy behind the scene e arekta fetch (get) request send kore, and jodi todoList ta te kono change(mutation) hoy ,se tokhon on the fly updated todolist ta ene dekhabe and new data cach kore rakhbe.
+
+   4.As a developer our job is to invalidate(refectch) the cache of the related query (key ex: 'todos')
+
+   5.component mount/unmount howar somoy tanstack akta arefetch chalay dey. for this reason, differnt page thekee data update kore  , data get kora page e asle updated data e pawa jay. but jodi ak e page e data update kora hoy and updated data real time e dekhte hole, MUST cache invalidate korte hobe.
+
+   6. Cache Time->By default kotokkhon data cache kore rakhbe ? 1000* 60 * 5   ms/5 min tanstack data cache in kore rakhe, so that after initial fetch, 5 min porjonto route change kore abar oi page e asle loading state na dekhiye, cache thekei data serve kore,Cache kotokkhon dhore rakhbe, seta 'gcTime' diye maintain kora hoy , at original get query.
+
+  7 . stale time-? jei data query hoyeche seta clean na, cache theke dekhacche, not latest, eta bujhate 'stale' status dekhay.jodi behind the scene e data fetch ta akta specific time er jonno off rakhte chai and tanstack k bole dite chai jei data ta ache setar status 'fresh' for certain perion of time? seta 'staleTime' diye maintain kora hoy , at original get query.
+   'fresh ' status e thaka kalin se kono bts get request pathabe na. jesob data frequently updated hoyna, sesob khetre bts request er dorkar nai.and sekhane staleTime diye backend e request pathanor rate ta maintain kora jay,
+   staleTime Infinity kore dile infinity time er jonno status 'fresh' thakbe, kokhono bts fetch korbe na.
+   By default staleTime thake 0, every time load howar sathe sathei bts fetch chole.
+
+//
+Multiple queries in same component -> https://tanstack.com/query/latest/docs/framework/react/guides/parallel-queries
+One query is dependent on another query -> https://tanstack.com/query/latest/docs/framework/react/guides/dependent-queries
+Paginated queries -> https://tanstack.com/query/latest/docs/framework/react/guides/paginated-queries
+
+
+
+
+refference: AddService.tsx , ServiceList.tsx , service.hook.ts, service.api.ts

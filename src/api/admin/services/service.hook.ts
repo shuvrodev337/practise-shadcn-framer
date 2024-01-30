@@ -5,6 +5,8 @@ const useGetServices = () => {
   const services = useQuery({
     queryKey: ["services"],
     queryFn: getServices,
+    // gcTime:5000
+    // staleTime: 30000
   });
   return services;
 };

@@ -31,6 +31,7 @@ const ServiceList = () => {
     );
   }
   return (
+    // https://ui.shadcn.com/docs/components/table
     <Container className="mt-10 border rounded ">
       <Table>
         <TableCaption>A list of total todos.</TableCaption>
